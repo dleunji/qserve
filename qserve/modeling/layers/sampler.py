@@ -88,6 +88,7 @@ class Sampler(nn.Module):
         ):
             token = torch.argmax(last_token_logits, dim=-1)
         else:
-            probs = torch.softmax(last_token_logits, dim=-1)
-            token = torch.multinomial(probs, num_samples=1).view(-1)
+            # probs = torch.softmax(last_token_logits, dim=-1)
+            # token = torch.multinomial(probs, num_samples=1).view(-1)
+            token = torch.argmax(last_token_logits, dim=-1)
         return token
